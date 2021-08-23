@@ -3,10 +3,10 @@ version: '3.4'
 services:
   fantom:
     container_name: fantom
-    image: fantom:1.0.1-rc.1
+    image: fantom:1.0.0-rc.2
     build:
       args:
-        VERSION: release/1.0.1-rc.1
+        VERSION: release/1.0.0-rc.2
       context: ./
       dockerfile: Dockerfile
     restart: unless-stopped
