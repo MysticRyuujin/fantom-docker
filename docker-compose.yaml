@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  fantom:
+    container_name: fantom
+    image: fantom:1.0.0-rc.4
+    build:
+      args:
+        VERSION: release/1.0.0-rc.4
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+        - /data/volumes/fantom:/datadir
+    ports:
+        - "5050:5050" # Peers (TPC)
+        - "5050:5050/udp" # Peers (UDP)
+    command:
+        - opera
+        - --genesis=/datadir/mainnet.g
+        - --port=5050
+        - --maxpeers=100
+        - --datadir=/datadir
+        - --http
+        - --http.addr=0.0.0.0
+        - --http.port=8545
+        - --http.api=ftm,eth,debug,admin,web3,personal,net,txpool,sfc
+        - --http.corsdomain=*
+        - --http.vhosts=*
+        - --ws
+        - --ws.addr=0.0.0.0
+        - --ws.port=8545
+        - --ws.api=ftm,eth,debug,admin,web3,personal,net,txpool,sfc
+        - --ws.origins=*
+        - --nousb
+    logging:
+      driver: "local"
