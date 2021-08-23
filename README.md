@@ -11,6 +11,6 @@ wget -o /data/volumes/fantom/mainnet.g https://opera.fantom.network/mainnet.g
 
 Start it up: `docker-compose up -d`
 
-If a new version comes out you can just update the `VERSION` in the `docker-compose.yaml` file and run again with:
+If a new version comes out you can just update the `VERSION` and `image` keys in the `docker-compose.yaml` file and run again with:
 
 `docker-compose up -d --build`
